@@ -2,14 +2,18 @@ class Coffee:
     def __init__(self,name):
         self.name = name
 
-        if isinstance(self._name, str) and len(self._name) >= 3:
-            return self._name
-        else:
-            raise ValueError("Name must be atleast 3 characters.")
+
     
     @property
     def name(self):
         return self._name
+    
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and len(value) >= 3:
+            self._name = value
+        else:
+            raise ValueError("Name must be atleast 3 characters.")
     
     def orders(self):
         from order import Order

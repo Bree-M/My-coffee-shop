@@ -1,12 +1,5 @@
-class Customer:
-  
-    def __init__(self, name):
-        self.name = name
-
-class Coffee:
-  
-    def __init__(self, name):
-        self.name = name
+from coffee import Coffee
+from customer import Customer
 
 class Order:
 
