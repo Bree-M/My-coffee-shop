@@ -1,35 +1,22 @@
 class Coffee:
-    def __init__(self,name):
-        self.name = name
+    def __init__(self, name):
+        self._name = name  # Direct assignment since it's immutable after init
+        self._orders = []
 
-
-    
     @property
     def name(self):
         return self._name
-    
-    @name.setter
-    def name(self, value):
-        if isinstance(value, str) and len(value) >= 3:
-            self._name = value
-        else:
-            raise ValueError("Name must be atleast 3 characters.")
-    
+
     def orders(self):
-        from order import Order
-        return [order for order in Order.all if order.coffee == self]
-    
+        return self._orders
+
     def customers(self):
-        return list({order.customer for order in self.order()})
-    
+        return list({order.customer for order in self._orders})
+
     def num_orders(self):
-        return len(self.orders())
-    
+        return len(self._orders)
+
     def average_price(self):
-        if self.num_orders() == 0:
+        if not self._orders:
             return 0
-        return sum(order.price for order in self.order()) / len(self.order())
-    
-    
-   
-   
+        return sum(order.price for order in self._orders) / len(self._orders)
