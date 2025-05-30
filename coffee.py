@@ -1,6 +1,6 @@
 class Coffee:
     def __init__(self, name):
-        self._name = name  # Direct assignment since it's immutable after init
+        self._name = name
         self._orders = []
 
     @property
